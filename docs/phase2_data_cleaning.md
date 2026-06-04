@@ -1,46 +1,42 @@
-# Phase 2 - Data Cleaning
+# Phase 2 – Data Cleaning & Preprocessing
 
-## Objectives
+### Completed Tasks
 
-- Create cleaned analytical tables
-- Standardize team names
-- Audit null values
-- Validate duplicates
-- Validate run values
-- Create season_year field
+* Created clean analytical tables from raw IPL data
+* Standardized team and venue names
+* Audited null values across datasets
+* Validated duplicate records
+* Verified run and wicket-related data
+* Created and validated `season_year` field
 
-## Cleaning Performed
+### Key Deliverables
+
+* `matches_clean`
+* `deliveries_clean`
+* Standardized IPL datasets
+* Data quality validation queries
 
 ### Team Standardization
 
-Delhi Daredevils -> Delhi Capitals
+- Delhi Daredevils → Delhi Capitals
+- Kings XI Punjab → Punjab Kings
+- Royal Challengers Bangalore → Royal Challengers Bengaluru
+- Rising Pune Supergiant → Rising Pune Supergiants
 
-Kings XI Punjab -> Punjab Kings
+## SQL Concepts Used
 
-Royal Challengers Bangalore -> Royal Challengers Bengaluru
+* CREATE TABLE AS
+* UPDATE
+* WHERE
+* DISTINCT
+* COUNT()
+* GROUP BY
+* HAVING
+* Data Validation Queries
 
-Rising Pune Supergiant -> Rising Pune Supergiants
+### Outcome
 
-### Null Value Audit
+Successfully transformed raw IPL datasets into clean, standardized, and analytics-ready tables, providing a reliable foundation for advanced SQL analysis and dashboard development.
 
-city = 0 nulls
 
-player_of_match = 0 nulls
 
-method = 0 nulls
-
-### Validation
-
-No duplicate match IDs
-
-No duplicate deliveries
-
-No negative run values
-
-Valid wicket indicators
-
-## Output
-
-matches_clean
-
-deliveries_clean
