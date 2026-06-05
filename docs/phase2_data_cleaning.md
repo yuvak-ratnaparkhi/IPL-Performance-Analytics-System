@@ -7,7 +7,7 @@
 * Audited null values across datasets
 * Validated duplicate records
 * Verified run and wicket-related data
-* Created and validated `season_year` field
+* Standardized season values across all IPL seasons
 
 ### Key Deliverables
 

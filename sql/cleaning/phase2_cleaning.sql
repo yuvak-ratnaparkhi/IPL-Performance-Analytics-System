@@ -383,3 +383,29 @@ WHERE venue = 'Wankhede Stadium, Mumbai';
 UPDATE matches_clean
 SET venue = 'Zayed Cricket Stadium'
 WHERE venue = 'Zayed Cricket Stadium, Abu Dhabi';
+
+
+-- =====================================================
+-- STEP 12: Season Standardization
+-- =====================================================
+
+UPDATE matches_clean
+SET season = '2008'
+WHERE season = '2007/08';
+
+UPDATE matches_clean
+SET season = '2010'
+WHERE season = '2009/10';
+
+UPDATE matches_clean
+SET season = '2021'
+WHERE season = '2020/21';
+
+
+-- =====================================================
+-- Validation: Verify Season Values
+-- =====================================================
+
+SELECT DISTINCT season
+FROM matches_clean
+ORDER BY season;
