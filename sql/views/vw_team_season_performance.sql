@@ -4,42 +4,64 @@
 
 CREATE OR REPLACE VIEW vw_team_season_performance AS
 
-SELECT 
+SELECT
+    season,
     team_name,
-    COUNT(*) AS matches_played,
+    matches_played,
+    matches_won,
+    win_percentage,
 
-    SUM (
-        CASE
-            WHEN winner = team_name THEN 1
-            ELSE 0
-        END
-    ) AS matches_won,
+    RANK() OVER (
+        PARTITION BY season
+        ORDER BY matches_won DESC
+    ) AS season_rank
 
-    ROUND (
-        SUM (
-            CASE 
+FROM
+(
+    SELECT
+        season,
+        team_name,
+        COUNT(*) AS matches_played,
+
+        SUM(
+            CASE
                 WHEN winner = team_name THEN 1
                 ELSE 0
-            END 
-        ) :: NUMERIC / COUNT(*) * 100,
-        2
-    ) AS win_percentage
+            END
+        ) AS matches_won,
 
-FROM (
-    SELECT 
-        team1 AS team_name,
-        winner
-    FROM matches_clean
+        ROUND(
+            SUM(
+                CASE
+                    WHEN winner = team_name THEN 1
+                    ELSE 0
+                END
+            )::NUMERIC / COUNT(*) * 100,
+            2
+        ) AS win_percentage
 
-    UNION ALL
+    FROM
+    (
+        SELECT
+            season,
+            team1 AS team_name,
+            winner
+        FROM matches_clean
 
-    SELECT 
-        team2 AS team_name,
-        winner
-    FROM matches_clean
-) teams 
+        UNION ALL
 
-GROUP BY team_name;
+        SELECT
+            season,
+            team2 AS team_name,
+            winner
+        FROM matches_clean
+    ) teams
+
+    GROUP BY
+        season,
+        team_name
+) season_stats;
+
 
 
 -- ==========================================
@@ -48,5 +70,7 @@ GROUP BY team_name;
 
 SELECT *
 FROM vw_team_season_performance
-ORDER BY matches_won DESC;
+ORDER BY season, matches_won DESC;
 
+SELECT *
+FROM vw_season_summary;

@@ -384,6 +384,12 @@ UPDATE matches_clean
 SET venue = 'Zayed Cricket Stadium'
 WHERE venue = 'Zayed Cricket Stadium, Abu Dhabi';
 
+-- Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium
+UPDATE matches_clean
+SET venue = 'Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium'
+WHERE venue = 'Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam';
+
+
 
 -- =====================================================
 -- STEP 12: Season Standardization

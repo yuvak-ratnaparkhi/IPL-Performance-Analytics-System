@@ -39,3 +39,4 @@ SELECT *
 FROM vw_player_bowling_stats 
 ORDER BY total_wickets DESC
 LIMIT 10;
+
