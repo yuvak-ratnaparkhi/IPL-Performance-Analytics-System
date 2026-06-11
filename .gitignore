@@ -2,3 +2,5 @@
 __pycache__/
 .ipynb_checkpoints/
 .vscode/
+# Ignore Large Machine Learning Models
+machine_learning/models/*.pkl
