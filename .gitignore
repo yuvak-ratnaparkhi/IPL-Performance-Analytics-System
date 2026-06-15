@@ -22,10 +22,6 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# Machine Learning Models
-*.pkl
-*.joblib
-
 # Streamlit
 .streamlit/secrets.toml
 
