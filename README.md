@@ -28,23 +28,34 @@ The project follows a complete analytics lifecycle:
 * PostgreSQL
 * SQL
 
-### Data Processing & Machine Learning
+### Data Processing
 
 * Python
 * Pandas
 * NumPy
+
+### Machine Learning
+
 * Scikit-Learn
 * Random Forest
 * XGBoost
 
-### Data Visualization
+### Data Visualization 
 
 * Power BI
+
+### Web Interface
+
+* Streamlit
 
 ### Version Control
 
 * Git
 * GitHub
+
+### Deployment (Upcoming)
+
+* Streamlit Cloud
 
 ---
 
@@ -65,104 +76,62 @@ Power BI Dashboards
       ↓
 Machine Learning Models
       ↓
-Web Application (Upcoming)
+Streamlit Web Application
       ↓
 Cloud Deployment (Upcoming)
 ```
 
 ---
 
-## Project Architecture
-
-```text
-IPL Dataset
-      ↓
-PostgreSQL Database
-      ↓
-Data Cleaning Layer
-      ↓
-Analytics Layer
-      ↓
-SQL Reporting Views
-      ↓
-Power BI Dashboards
-      ↓
-Machine Learning Models
-      ↓
-Prediction System
-```
-
----
-
-## Project Progress
+## 🚀 Project Progress
 
 ### ✅ Phase 1 – Database Setup
 
-* Dataset collection and validation
-* Database schema design
-* Raw data ingestion
-* Data quality verification
+* Designed PostgreSQL database schema
+* Imported and validated IPL datasets
+* Ensured data quality and consistency
 
 ### ✅ Phase 2 – Data Cleaning & Preprocessing
 
-* Team standardization
-* Venue standardization
-* Missing value handling
-* Data quality validation
+* Standardized team and venue names
+* Handled missing and inconsistent records
+* Prepared clean analytical datasets
 
 ### ✅ Phase 3 – Analytics Layer
 
-* Team Analytics
-* Batting Analytics
-* Bowling Analytics
-* Venue Analytics
-* Season Analytics
+* Developed team, batting, bowling, venue, and season analytics
+* Generated SQL-based business insights
 
 ### ✅ Phase 4 – Data Modeling & SQL Views
 
-* Team Performance View
-* Season Summary View
-* Batting Statistics View
-* Bowling Statistics View
-* Venue Statistics View
-* Team Season Performance View
-* Head-to-Head View
+* Built optimized reporting views
+* Created performance, season, venue, and head-to-head analysis layers
 
 ### ✅ Phase 5 – Power BI Dashboard
 
-Built 6 interactive dashboards:
-
-1. IPL Overview Dashboard
-2. Team Performance Dashboard
-3. Batting Analytics Dashboard
-4. Bowling Analytics Dashboard
-5. Venue Analytics Dashboard
-6. Head-to-Head Analytics Dashboard
-
-Features:
-
-* KPI Cards
-* Interactive Slicers
-* Matrix Reports
-* Dynamic Filtering
-* Team Comparisons
-* Venue Analysis
+* Designed 6 interactive dashboards
+* Implemented KPI cards, slicers, filters, and comparative analysis
+* Delivered business intelligence reporting solution
 
 ### ✅ Phase 6 – Machine Learning & Predictive Analytics
 
-Completed:
-
-* Built IPL Match Winner Prediction System
-* Engineered 14 cricket-specific features
+* Engineered 14 predictive features
 * Trained Random Forest and XGBoost models
 * Achieved 56.42% prediction accuracy
-* Evaluated models using ROC-AUC and Confusion Matrix
-* Implemented live match prediction with probability scores
-* Generated feature importance analysis
+* Implemented match winner prediction system
+* Performed model evaluation and feature importance analysis
 
-For detailed ML documentation:
+📄 Detailed Documentation: `docs/phase6_machine_learning.md`
 
-📄 docs/phase6_machine_learning.md
+### ✅ Phase 7 – Streamlit Dashboard
+
+* Developed interactive web application using Streamlit
+* Integrated machine learning prediction engine
+* Added live win probability predictions
+* Implemented head-to-head and venue insights
+* Optimized performance using caching
+
+📄 Detailed Documentation: `docs/phase7_ui_development.md`
 
 ---
 
@@ -194,15 +163,27 @@ For detailed ML documentation:
 
 ---
 
-## Machine Learning Output
+## Machine Learning Outputs
 
-### Model Comparison
+### Model Performance Comparison
 
-![Model Comparison](assets/screenshots/phase6_model_comparison.png)
+![Model Performance Comparison](machine_learning/outputs/model_performance_comparison.png)
 
-### Prediction Output
+### XGBoost Feature Importance
 
-![Prediction Output](assets/screenshots/phase6_prediction_output.png)
+![XGBoost Feature Importance](machine_learning/outputs/feature_importance_xgboost.png)
+
+### XGBoost Confusion Matrix
+
+![XGBoost Confusion Matrix](machine_learning/outputs/confusion_matrix_xgboost.png)
+
+---
+
+## Streamlit Web Application
+
+### Match Winner Prediction Dashboard
+
+![Streamlit Dashboard](assets/screenshots/07_streamlit_dashboard.png)
 
 ---
 
@@ -226,63 +207,26 @@ For detailed ML documentation:
 ```text
 IPL-Performance-Analytics-System/
 
-├── assets/
-│   └── screenshots/
-│
-├── data/
-│
-├── docs/
-│   ├── phase1_database_setup.md
-│   ├── phase2_data_cleaning.md
-│   ├── phase3_analytics.md
-│   ├── phase4_data_modeling.md
-│   ├── phase5_powerbi_dashboard.md
-│   └── phase6_machine_learning.md
-│
-├── sql/
-│   ├── cleaning/
-│   ├── analytics/
-│   └── views/
-│
-├── machine_learning/
-│   ├── winner_prediction.py
-│   ├── dataset/
-│   └── models/
-│
-├── dashboard/
-│
+├── assets/              # Dashboard & UI screenshots
+├── data/                # Datasets
+├── docs/                # Phase-wise documentation
+├── sql/                 # SQL scripts, analytics, views
+├── machine_learning/    # Models, notebooks, outputs
+├── app.py               # Streamlit web application
+├── requirements.txt
 ├── README.md
 └── .gitignore
 ```
 
 ---
 
-## Current Status
-
-### Completed
-
-* [x] Phase 1 – Database Setup
-* [x] Phase 2 – Data Cleaning
-* [x] Phase 3 – Analytics Layer
-* [x] Phase 4 – Data Modeling & SQL Views
-* [x] Phase 5 – Power BI Dashboard
-* [x] Phase 6 – Machine Learning & Predictive Analytics
-
-### Upcoming
-
-* [ ] Phase 7 – UI Development (Streamlit / Flask Web App)
-* [ ] Phase 8 – Cloud Deployment
-
----
-
 ## Future Enhancements
 
-* Interactive Prediction Web Application
 * Real-Time Match Predictions
 * Player-Level Prediction Models
 * Live IPL Data Integration
 * Advanced Machine Learning Models
-* Cloud Deployment & Public Hosting
+* Match Recommendation & Insights Engine
+* Mobile-Friendly Responsive Dashboard
 
-```
 ```

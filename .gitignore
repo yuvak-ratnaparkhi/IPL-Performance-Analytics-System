@@ -1,6 +1,41 @@
-*.csv
+# Python Environment
+venv/
+.venv/
+env/
+
+# Python Cache
 __pycache__/
-.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+
+# Testing & Cache
+.pytest_cache/
+.mypy_cache/
+
+# IDE Settings
 .vscode/
-# Ignore Large Machine Learning Models
-machine_learning/models/*.pkl
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Machine Learning Models
+*.pkl
+*.joblib
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Large Data Files 
+**/deliveries.csv
+**/matches.csv

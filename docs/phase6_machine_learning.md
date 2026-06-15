@@ -2,19 +2,19 @@
 
 ### Completed Tasks
 
-* Prepared machine learning dataset from PostgreSQL reporting views
-* Performed feature engineering using cricket-specific metrics
-* Built and trained Random Forest and XGBoost models
+* Built a machine learning dataset from analytical SQL views
+* Engineered 14 cricket-specific predictive features
+* Trained Random Forest and XGBoost models
 * Evaluated models using Accuracy, ROC-AUC, and Confusion Matrix
-* Generated feature importance analysis
-* Implemented live match winner prediction system
-* Produced probability-based match outcome predictions
+* Performed feature importance analysis
+* Developed a live match winner prediction system
+* Generated probability-based prediction outputs
 
 ### Key Deliverables
 
 * IPL Match Winner Prediction Model
-* Random Forest Classifier
-* XGBoost Classifier
+* Random Forest Model
+* XGBoost Model
 * Feature Engineering Pipeline
 * Model Evaluation Framework
 * Live Prediction Engine
@@ -26,8 +26,7 @@
 * Train-Test Split
 * Random Forest
 * XGBoost
-* Accuracy Score
-* ROC-AUC Score
+* Accuracy & ROC-AUC Evaluation
 * Confusion Matrix
 * Feature Importance Analysis
 
@@ -36,8 +35,8 @@
 * Random Forest Accuracy: 56.42%
 * XGBoost Accuracy: 56.42%
 * XGBoost ROC-AUC: 0.5864
-* 14 Engineered Predictive Features
+* 14 Engineered Features
 
 ### Outcome
 
-Successfully developed a machine learning-based IPL Match Winner Prediction System capable of analyzing historical team performance, venue conditions, and match factors to generate realistic win probability predictions. This phase extended the project from descriptive analytics to predictive analytics using advanced machine learning techniques.
+Successfully developed an IPL Match Winner Prediction System that analyzes team performance, venue conditions, toss impact, and historical trends to estimate match outcomes and win probabilities using machine learning techniques.
