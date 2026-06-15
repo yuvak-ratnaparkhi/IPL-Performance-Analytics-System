@@ -137,15 +137,13 @@ Cloud Deployment (Upcoming)
 
 ## Dashboard Preview
 
-### Power BI Dashboard
+## Project Demonstration
 
-![Power BI Dashboard](assets/screenshots/01_overview_dashboard.png)
+Power BI dashboard screenshots and Streamlit application screenshots are available in:
 
-### Streamlit Web Application
+assets/screenshots/
 
-![Streamlit Dashboard](assets/screenshots/07_streamlit_dashboard.png)
-
-Additional dashboard screenshots are available in the `assets/screenshots/` directory.
+---
 
 ## Machine Learning Outputs
 
@@ -156,6 +154,10 @@ Additional dashboard screenshots are available in the `assets/screenshots/` dire
 ### XGBoost Feature Importance
 
 ![XGBoost Feature Importance](machine_learning/outputs/feature_importance_xgboost.png)
+
+### XGBoost Confusion Matrix
+
+![XGBoost Confusion Matrix](machine_learning/outputs/confusion_matrix_xgboost.png)
 
 ---
 
