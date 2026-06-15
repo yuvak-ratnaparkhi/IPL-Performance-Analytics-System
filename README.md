@@ -135,33 +135,17 @@ Cloud Deployment (Upcoming)
 
 ---
 
-## Dashboard Screenshots
+## Dashboard Preview
 
-### IPL Overview Dashboard
+### Power BI Dashboard
 
-![IPL Overview Dashboard](assets/screenshots/01_overview_dashboard.png)
+![Power BI Dashboard](assets/screenshots/01_overview_dashboard.png)
 
-### Team Performance Dashboard
+### Streamlit Web Application
 
-![Team Performance Dashboard](assets/screenshots/02_team_performance_dashboard.png)
+![Streamlit Dashboard](assets/screenshots/07_streamlit_dashboard.png)
 
-### Batting Analytics Dashboard
-
-![Batting Analytics Dashboard](assets/screenshots/03_batting_analytics_dashboard.png)
-
-### Bowling Analytics Dashboard
-
-![Bowling Analytics Dashboard](assets/screenshots/04_bowling_analytics_dashboard.png)
-
-### Venue Analytics Dashboard
-
-![Venue Analytics Dashboard](assets/screenshots/05_venue_analytics_dashboard.png)
-
-### Head-to-Head Dashboard
-
-![Head-to-Head Dashboard](assets/screenshots/06_head_to_head_dashboard.png)
-
----
+Additional dashboard screenshots are available in the `assets/screenshots/` directory.
 
 ## Machine Learning Outputs
 
@@ -172,18 +156,6 @@ Cloud Deployment (Upcoming)
 ### XGBoost Feature Importance
 
 ![XGBoost Feature Importance](machine_learning/outputs/feature_importance_xgboost.png)
-
-### XGBoost Confusion Matrix
-
-![XGBoost Confusion Matrix](machine_learning/outputs/confusion_matrix_xgboost.png)
-
----
-
-## Streamlit Web Application
-
-### Match Winner Prediction Dashboard
-
-![Streamlit Dashboard](assets/screenshots/07_streamlit_dashboard.png)
 
 ---
 
