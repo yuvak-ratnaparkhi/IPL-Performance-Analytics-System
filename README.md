@@ -142,7 +142,7 @@ Cloud Deployment ✅ Live
 ### ✅ Phase 8 – Cloud Deployment
 
 * Deployed on Streamlit Community Cloud
-* Publicly accessible at : ipl-performance-analytics.streamlit.app
+* Publicly accessible at : [ipl-performance-analytics.streamlit.app](https://ipl-performance-analytics.streamlit.app/)
 
 ---
 
