@@ -18,7 +18,7 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Grotesk:wght=500;700&display=swap');
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
 [data-testid="stSidebar"] { background: linear-gradient(180deg, #161b22 0%, #0d1117 100%); border-right: 1px solid #21262d; }
 #MainMenu, footer { visibility: hidden; }
@@ -67,6 +67,18 @@ def load_data():
     csv_path = os.path.join(base, "machine_learning", "dataset", "match_winner_dataset.csv")
     df = pd.read_csv(csv_path)
     
+    # Complete, comprehensive historical franchise mappings
+    name_mapping = {
+        'Kings XI Punjab': 'Punjab Kings',
+        'Royal Challengers Bangalore': 'Royal Challengers Bengaluru',
+        'Delhi Daredevils': 'Delhi Capitals',
+        'Deccan Chargers': 'Sunrisers Hyderabad',
+        'Rising Pune Supergiant': 'Rising Pune Supergiants'
+    }
+    df['team1'] = df['team1'].replace(name_mapping)
+    df['team2'] = df['team2'].replace(name_mapping)
+    df['winner'] = df['winner'].replace(name_mapping)
+    
     path_option_1 = os.path.join(base, "data", "processed", "franchise_players.json")
     path_option_2 = os.path.join(base, "machine_learning", "dataset", "franchise_players.json")
     
@@ -102,25 +114,18 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    selected_team = st.selectbox("Select Franchise", teams, index=5)
+    selected_team = st.selectbox("Select Franchise", teams, index=teams.index("Royal Challengers Bengaluru") if "Royal Challengers Bengaluru" in teams else 0)
     
-    # ── DYNAMIC CASCADING FILTER LOGIC ──
-    # 1. Find only the matches where the selected team played
     team_history_df = df[(df['team1'] == selected_team) | (df['team2'] == selected_team)]
-    # 2. Extract only the valid seasons for this specific team
     valid_seasons = ["All Time"] + sorted(list(team_history_df['season'].unique()), reverse=True)
     
     selected_season = st.selectbox("Season Filter", valid_seasons)
     
-    # ── DEBUG/STATUS TRACKER ──
     st.markdown("<br><hr style='border-color:#21262d;'>", unsafe_allow_html=True)
     if json_path_used:
         st.sidebar.success(f"📂 Pipeline Data Loaded")
-        # Optional: uncomment next line if you want to see the exact path in sidebar
-        # st.sidebar.caption(f"Source: {os.path.basename(os.path.dirname(json_path_used))}/{os.path.basename(json_path_used)}")
     else:
         st.sidebar.error("❌ 'franchise_players.json' Not Found")
-        st.sidebar.info("👉 Please run 'python machine_learning/build_player_stats.py' in your terminal to generate it.")
 
 # ─────────────────────────────────────────────
 # DATA PROCESSING
@@ -128,14 +133,13 @@ with st.sidebar:
 team_df = df[(df['team1'] == selected_team) | (df['team2'] == selected_team)].copy()
 
 if selected_season != "All Time":
-    team_df = team_df[team_df['season'] == selected_season]
+    team_df = team_df[team_df['season'] == int(selected_season)]
 
 total_matches = len(team_df)
 wins = len(team_df[team_df['winner'] == selected_team])
 losses = total_matches - wins
 win_pct = (wins / total_matches * 100) if total_matches > 0 else 0
 
-# Calculate Season-wise Trend
 trend_data = []
 for s in sorted(df['season'].unique()):
     s_df = df[((df['team1'] == selected_team) | (df['team2'] == selected_team)) & (df['season'] == s)]
@@ -192,7 +196,6 @@ col_chart, col_best = st.columns([2, 1], gap="large")
 with col_chart:
     st.markdown('<div class="section-card"><div class="section-title">Season-wise Win Percentage Trend</div>', unsafe_allow_html=True)
     if not trend_df.empty:
-        # Lowered height to 210 to give x-axis labels horizontal clearance
         st.line_chart(trend_df, height=210, use_container_width=True, color="#f5a623")
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -217,17 +220,82 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Top Players (Dynamic Generation from Pipeline) ──
-col_bat, col_bowl = st.columns(2, gap="large")
-
-# Extract player information safely
+# ── Top Players (Mathematical Cumulative Aggregation Engine) ──
 clean_team_name = selected_team.strip()
-team_players = player_data.get(clean_team_name, {"bat": [], "bowl": []})
+aliases = [clean_team_name]
+
+if "Punjab" in clean_team_name:
+    aliases = ["Punjab Kings", "Kings XI Punjab"]
+elif "Royal Challengers" in clean_team_name:
+    aliases = ["Royal Challengers Bangalore", "Royal Challengers Bengaluru"]
+elif "Delhi" in clean_team_name:
+    aliases = ["Delhi Daredevils", "Delhi Capitals"]
+elif "Sunrisers" in clean_team_name or "Deccan" in clean_team_name:
+    aliases = ["Sunrisers Hyderabad", "Deccan Chargers"]
+elif "Pune" in clean_team_name:
+    aliases = ["Rising Pune Supergiant", "Rising Pune Superagents", "Rising Pune Supergiants"]
+
+bat_stats = {}
+bowl_stats = {}
+
+for alias in aliases:
+    franchise_data = player_data.get(alias, {"bat": [], "bowl": []})
+    
+    # Mathematically aggregate historical batsman records across split aliases
+    for p in franchise_data.get("bat", []):
+        p_name = p[0]
+        try:
+            p_runs, p_avg, p_sr = int(p[1]), float(p[2]), float(p[3])
+        except ValueError:
+            continue
+            
+        p_dismissals = p_runs / p_avg if p_avg > 0 else 0
+        p_balls = (p_runs / p_sr) * 100 if p_sr > 0 else 0
+        
+        if p_name not in bat_stats:
+            bat_stats[p_name] = {"runs": 0, "dismissals": 0, "balls": 0}
+        bat_stats[p_name]["runs"] += p_runs
+        bat_stats[p_name]["dismissals"] += p_dismissals
+        bat_stats[p_name]["balls"] += p_balls
+
+    # Mathematically aggregate historical bowler records across split aliases
+    for p in franchise_data.get("bowl", []):
+        p_name = p[0]
+        try:
+            p_wkts, p_econ, p_avg = int(p[1]), float(p[2]), float(p[3])
+        except ValueError:
+            continue
+            
+        p_runs_conceded = p_wkts * p_avg
+        p_overs = p_runs_conceded / p_econ if p_econ > 0 else 0
+        
+        if p_name not in bowl_stats:
+            bowl_stats[p_name] = {"wkts": 0, "runs_conceded": 0, "overs": 0}
+        bowl_stats[p_name]["wkts"] += p_wkts
+        bowl_stats[p_name]["runs_conceded"] += p_runs_conceded
+        bowl_stats[p_name]["overs"] += p_overs
+
+# Recompile True Combined Career Averages
+final_bat = []
+for name, data in bat_stats.items():
+    c_avg = data["runs"] / data["dismissals"] if data["dismissals"] > 0 else data["runs"]
+    c_sr = (data["runs"] / data["balls"]) * 100 if data["balls"] > 0 else 0
+    final_bat.append([name, data["runs"], round(c_avg, 1), round(c_sr, 1)])
+
+final_bowl = []
+for name, data in bowl_stats.items():
+    c_econ = data["runs_conceded"] / data["overs"] if data["overs"] > 0 else 0
+    c_avg = data["runs_conceded"] / data["wkts"] if data["wkts"] > 0 else 0
+    final_bowl.append([name, data["wkts"], round(c_econ, 2), round(c_avg, 1)])
+
+top_3_batsmen = sorted(final_bat, key=lambda x: x[1], reverse=True)[:3]
+top_3_bowlers = sorted(final_bowl, key=lambda x: x[1], reverse=True)[:3]
+
+col_bat, col_bowl = st.columns(2, gap="large")
 
 with col_bat:
     bat_rows_html = ""
-    for player in team_players["bat"]:
-        # Flattened string to prevent Markdown code block rendering
+    for player in top_3_batsmen:
         bat_rows_html += f"<tr><td class='player-name'>{player[0]}</td><td>{player[1]}</td><td>{player[2]}</td><td>{player[3]}</td></tr>"
         
     if not bat_rows_html:
@@ -246,8 +314,7 @@ with col_bat:
 
 with col_bowl:
     bowl_rows_html = ""
-    for player in team_players["bowl"]:
-        # Flattened string to prevent Markdown code block rendering
+    for player in top_3_bowlers:
         bowl_rows_html += f"<tr><td class='player-name'>{player[0]}</td><td>{player[1]}</td><td>{player[2]}</td><td>{player[3]}</td></tr>"
         
     if not bowl_rows_html:

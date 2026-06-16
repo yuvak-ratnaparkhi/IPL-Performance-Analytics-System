@@ -4,13 +4,13 @@ st.set_page_config(
     page_title="IPL Analytics Hub",
     page_icon="🏏",
     layout="wide",
-    initial_sidebar_state="collapsed" # Hide sidebar on home page for clean look
+    initial_sidebar_state="collapsed"
 )
 
 # ── Global CSS for Home Page ──
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800;900&family=Space+Grotesk:wght=400;500;600;700&display=swap');
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
 .block-container { padding: 3rem 2.5rem !important; max-width: 1200px; }
 
