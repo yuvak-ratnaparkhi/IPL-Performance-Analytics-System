@@ -4,6 +4,12 @@ An end-to-end IPL Analytics and Machine Learning project built using PostgreSQL,
 
 ---
 
+## 🚀 Live Demo
+
+🔗 **Live Streamlit Application:** [https://ipl-performance-analytics.streamlit.app](https://ipl-performance-analytics.streamlit.app)
+
+---
+
 ## Project Overview
 
 The IPL Performance Analytics System transforms raw IPL datasets into meaningful insights through data engineering, business intelligence, and machine learning.
