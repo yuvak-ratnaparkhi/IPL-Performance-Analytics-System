@@ -17,7 +17,7 @@ The project follows a complete analytics lifecycle:
 * Data Modeling
 * Power BI Dashboard Development
 * Machine Learning & Prediction
-* Web Application Deployment (Upcoming)
+* Web Application Deployment ✅ Live
 
 ---
 
@@ -78,7 +78,7 @@ Machine Learning Models
       ↓
 Streamlit Web Application
       ↓
-Cloud Deployment (Upcoming)
+Cloud Deployment ✅ Live
 ```
 
 ---
@@ -132,6 +132,11 @@ Cloud Deployment (Upcoming)
 * Optimized performance using caching
 
 📄 Detailed Documentation: `docs/phase7_ui_development.md`
+
+### ✅ Phase 8 – Cloud Deployment
+
+* Deployed on Streamlit Community Cloud
+* Publicly accessible at : ipl-performance-analytics.streamlit.app
 
 ---
 
